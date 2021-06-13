@@ -1,39 +1,52 @@
 import React from 'react'
 import { getTime } from '../../utils/timeFormatter';
 
-interface Props {
+export interface MessageData {
   messageData: {
     text: string,
     ts: string,
-    user_profile: {
+    user_profile?: {
+      display_name: string,
       image_72: string
     },
+    user: string
     blocks: Array<{
       elements: Array<{
         elements: Array<{
-          text: string,
-          url: string
+          type: string,
+          text?: string,
+          url?: string,
+          channel_id?: string
         }>
       }>
+    }>,
+    files?: Array<{
+      permalink: string,
+      title: string
     }>
   }
+  [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
 }
 
 /**
  * 一つのメッセージ
  */
-export default class Message extends React.Component<Props> {
+export default class Message extends React.Component<MessageData> {
 
   render() {
     // メッセージ一つに詰まってる情報すべて
     const data = this.props.messageData
     console.log(data);
 
+    const name = data.user_profile ? data.user_profile.display_name : data.user
+
     // フォーマットした時間
     const time = getTime(data.ts)
 
     // iconのURL ない場合はダミーをはめる
     const icon_url = data.user_profile ? data.user_profile.image_72 : "https://placehold.jp/100x100.png"
+
+    const files = data.files
 
     return (
       <section>
@@ -45,7 +58,7 @@ export default class Message extends React.Component<Props> {
         <div>
           {/* 名前と時間のhead */}
           <div>
-            <p></p>
+            <p>{name}</p>
             <p>{time}</p>
           </div>
 
@@ -60,10 +73,20 @@ export default class Message extends React.Component<Props> {
                         {element.elements.map((el, key3) => {
                           return (
                             <React.Fragment key={key3}>
-                              {el.text &&
-                                <span>{el.text}</span>
+                              {el.type == "channel" && el.channel_id}
+                              {el.type == "text" &&
+                                <span>
+                                  {el.text.split("\n").map((t, key4) => {
+                                    return (
+                                      <React.Fragment key={key4}>
+                                        {t}
+                                        <br/>
+                                      </React.Fragment>
+                                    )
+                                  })}
+                                  </span>
                               }
-                              {el.url &&
+                              {el.type == "link" &&
                                 <a href={el.url}>{el.url}</a>
                               }
                               <br/>
@@ -77,6 +100,16 @@ export default class Message extends React.Component<Props> {
               )
             })}
           </p>
+
+          <ul>
+            {files && files.length && files.map((file, key) => {
+              return (
+                <li key={key}>
+                  <a href={file.permalink} target="_blank">{file.title}</a>
+                </li>
+              )
+            })}
+          </ul>
         </div>
 
       </section>
