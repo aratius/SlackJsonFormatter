@@ -36,7 +36,8 @@ export default class Message extends React.Component<MessageData> {
   render() {
     // メッセージ一つに詰まってる情報すべて
     const data = this.props.messageData
-    console.log(data);
+
+    if(!data) return (<></>)
 
     const name = data.user_profile ? data.user_profile.display_name : data.user
 
