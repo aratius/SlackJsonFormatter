@@ -3,18 +3,18 @@ import SlackView from '../components/react/slackView'
 import { getJson } from '../components/utils/jsonGetter'
 
 interface Props {
-  res: any  // TODO: 後で変える
+  res: JSON  // TODO: 後で変える
 }
 
 export default class Top extends React.Component<Props> {
 
   render() {
 
-    console.log(this.props.res);
-
     return (
       <>
-        <SlackView />
+        <SlackView
+          messages={this.props.res}
+        />
       </>
     )
   }
