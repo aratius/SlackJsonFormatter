@@ -35,10 +35,12 @@ export default class SlackView extends React.Component{
       <>
         {/* slackぽい カードの外枠 */}
         <div>
-
           <input type="file" multiple onChange={this.handleReadFile} />
 
           {/* メッセージあるだけループ回す */}
+          {/* TODO: 日付順に並び替え */}
+          {/* 授業別ならタブ分ける
+           */}
           <ul>
             {this.state.messageData &&
             this.state.messageData.length &&
@@ -46,7 +48,7 @@ export default class SlackView extends React.Component{
               return(
                 <React.Fragment key={key}>
                   <MessageRouter
-                    msg={data}
+                    data={data}
                   />
                 </React.Fragment>
               )
@@ -57,5 +59,4 @@ export default class SlackView extends React.Component{
       </>
     )
   }
-
 }

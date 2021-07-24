@@ -3,11 +3,11 @@ import { Blocks, File, MessageElement } from '../../config/interfaces';
 import { getMessageArray } from '../../utils/messageArray';
 import { getTime } from '../../utils/timeFormatter';
 import Files from './formatter/files';
-import User from './formatter/icon';
+import User from './formatter/user';
 import MessageBody from './formatter/messageBody';
 
 export interface Props {
-  msg: {
+  data: {
     text: string,
     ts: string,
     user_profile?: {
@@ -29,7 +29,7 @@ export default class Message extends React.Component<Props> {
 
   render() {
     // メッセージ一つに詰まってる情報すべて
-    const data = this.props.msg
+    const data = this.props.data
     if(!data) return (<></>)
 
     // 名前

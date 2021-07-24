@@ -1,11 +1,17 @@
 import { ReactElement } from "react";
 import { Component } from "react";
 
-export default class Notify extends Component {
+interface Props {
+  data: any
+}
+
+export default class Notify extends Component<Props> {
 
   render(): ReactElement {
+    const data = this.props.data
+
     return(
-      <>通知系</>
+      <>{data.text}</>
     )
   }
 

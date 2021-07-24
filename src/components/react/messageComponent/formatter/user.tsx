@@ -7,7 +7,7 @@ interface Props {
   time: string
 }
 
-export default class Icon extends Component<Props> {
+export default class User extends Component<Props> {
 
   render(): ReactElement {
     const icon_url = this.props.url
@@ -16,7 +16,7 @@ export default class Icon extends Component<Props> {
     const time = this.props.time
 
     return (
-      <>
+      <div>
         {/* アイコン */}
         <h2>
           <img src={icon_url} alt={icon_alt} />
@@ -27,7 +27,7 @@ export default class Icon extends Component<Props> {
           <p>{name}</p>
           <p>{time}</p>
         </div>
-      </>
+      </div>
     )
   }
 
