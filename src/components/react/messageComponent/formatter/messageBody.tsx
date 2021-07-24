@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from "react";
 import { Component } from "react";
-import { MessageElement } from "./message";
+import { MessageElement } from "../../../config/interfaces";
 
 interface Props {
   messageArray: MessageElement[]
@@ -9,7 +9,7 @@ interface Props {
 export default class MessageBody extends Component<Props> {
 
   render(): ReactElement {
-    const messageArray = this.props.messageArray
+    const messageArray: MessageElement[] = this.props.messageArray
 
     return (
       // メッセージボディ

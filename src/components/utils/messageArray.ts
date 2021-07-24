@@ -1,4 +1,4 @@
-import { Blocks, MessageElement } from "../react/common/message"
+import { Blocks, MessageElement } from "../config/interfaces"
 
 export const getMessageArray = (blocks: Blocks[]): MessageElement[] => {
   // 返す値

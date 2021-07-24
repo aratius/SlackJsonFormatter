@@ -1,29 +1,10 @@
 import React from 'react'
+import { Blocks, File, MessageElement } from '../../config/interfaces';
 import { getMessageArray } from '../../utils/messageArray';
 import { getTime } from '../../utils/timeFormatter';
-import Files from './files';
-import User from './icon';
-import MessageBody from './messageBody';
-
-export interface MessageElement {
-  type: "link" | "text" | "channel",
-  text?: string,
-  url?: string,
-  channel_id?: string,
-  [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
-}
-
-export interface Blocks {
-  elements?: Array<{
-    elements?: MessageElement[]
-  }>,
-  [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
-}
-
-export  interface File {
-  permalink: string,
-  title: string
-}
+import Files from './formatter/files';
+import User from './formatter/icon';
+import MessageBody from './formatter/messageBody';
 
 export interface Props {
   msg: {
@@ -79,7 +60,6 @@ export default class Message extends React.Component<Props> {
 
         {/* 添付ファイル */}
         <Files files={files} />
-
       </section>
     )
   }

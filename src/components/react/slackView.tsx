@@ -1,5 +1,5 @@
 import React from 'react'
-import MessageRouter from './common/MessageRouter'
+import MessageRouter from './messageComponent/MessageRouter'
 
 interface Props{}
 
