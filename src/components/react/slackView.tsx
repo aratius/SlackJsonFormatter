@@ -1,14 +1,11 @@
 import React from 'react'
-import Message from './common/message'
-import { MessageData } from './common/message'
+import MessageRouter from './common/MessageRouter'
 
-interface Props {
-}
+interface Props{}
 
-export default class SlackView extends React.Component<Props> {
+export default class SlackView extends React.Component{
 
   state: {
-    messageData?: MessageData[]
     [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
   }
 
@@ -39,7 +36,7 @@ export default class SlackView extends React.Component<Props> {
         {/* slackぽい カードの外枠 */}
         <div>
 
-          <input type="file" onChange={this.handleReadFile} />
+          <input type="file" multiple onChange={this.handleReadFile} />
 
           {/* メッセージあるだけループ回す */}
           <ul>
@@ -48,7 +45,9 @@ export default class SlackView extends React.Component<Props> {
             this.state.messageData.map((data: any, key: any) => {
               return(
                 <React.Fragment key={key}>
-                  <Message messageData={data} />
+                  <MessageRouter
+                    msg={data}
+                  />
                 </React.Fragment>
               )
             })

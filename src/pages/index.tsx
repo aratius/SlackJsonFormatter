@@ -1,6 +1,6 @@
 import React from 'react'
 import SlackView from '../components/react/slackView'
-import { getJson } from '../components/utils/jsonGetter'
+import { getJson } from '../components/utils/json'
 
 interface Props {
 }

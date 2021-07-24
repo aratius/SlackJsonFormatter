@@ -1,8 +1,32 @@
 import React from 'react'
+import { getMessageArray } from '../../utils/messageArray';
 import { getTime } from '../../utils/timeFormatter';
+import Files from './files';
+import User from './icon';
+import MessageBody from './messageBody';
 
-export interface MessageData {
-  messageData: {
+export interface MessageElement {
+  type: "link" | "text" | "channel",
+  text?: string,
+  url?: string,
+  channel_id?: string,
+  [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
+}
+
+export interface Blocks {
+  elements?: Array<{
+    elements?: MessageElement[]
+  }>,
+  [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
+}
+
+export  interface File {
+  permalink: string,
+  title: string
+}
+
+export interface Props {
+  msg: {
     text: string,
     ts: string,
     user_profile?: {
@@ -10,108 +34,51 @@ export interface MessageData {
       image_72: string
     },
     user: string
-    blocks: Array<{
-      elements: Array<{
-        elements: Array<{
-          type: string,
-          text?: string,
-          url?: string,
-          channel_id?: string
-        }>
-      }>
-    }>,
-    files?: Array<{
-      permalink: string,
-      title: string
-    }>
+    blocks: Blocks[]
+    files?: File[]
   }
   [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
 }
 
 /**
  * 一つのメッセージ
+ * MessageBaseという形にして、Messageの形式によってコンポーネントを切り分ける
  */
-export default class Message extends React.Component<MessageData> {
+export default class Message extends React.Component<Props> {
 
   render() {
     // メッセージ一つに詰まってる情報すべて
-    const data = this.props.messageData
-
+    const data = this.props.msg
     if(!data) return (<></>)
 
+    // 名前
     const name = data.user_profile ? data.user_profile.display_name : data.user
-
-    // フォーマットした時間
+    // タイムスタンプをフォーマット
     const time = getTime(data.ts)
-
-    // iconのURL ない場合はダミーをはめる
+    // iconのURL ない場合はとりあえずダミーをはめる
     const icon_url = data.user_profile ? data.user_profile.image_72 : "https://placehold.jp/100x100.png"
-
+    // ファイル配列
     const files = data.files
+    // Message配列
+    const messageArray: MessageElement[] = getMessageArray(data.blocks)
 
     return (
       <section>
-        {/* アイコン */}
-        <h2>
-          <img src={icon_url} alt="" />
-        </h2>
+        {/* ユーザー情報 */}
+        <User
+          url={icon_url}
+          alt="[dummy]hoge"
+          name={name}
+          time={time}
+        />
 
-        <div>
-          {/* 名前と時間のhead */}
-          <div>
-            <p>{name}</p>
-            <p>{time}</p>
-          </div>
+        {/* メッセージボディ */}
+        <MessageBody
+          messageArray={messageArray}
+        />
 
-          {/* メッセージボディ */}
-          <p>
-            {data.blocks.map((block, key1) => {
-              return (
-                <React.Fragment key={key1}>
-                  {block.elements.map((element, key2)=> {
-                    return (
-                      <React.Fragment key={key2}>
-                        {element.elements.map((el, key3) => {
-                          return (
-                            <React.Fragment key={key3}>
-                              {el.type == "channel" && el.channel_id}
-                              {el.type == "text" &&
-                                <span>
-                                  {el.text.split("\n").map((t, key4) => {
-                                    return (
-                                      <React.Fragment key={key4}>
-                                        {t}
-                                        <br/>
-                                      </React.Fragment>
-                                    )
-                                  })}
-                                  </span>
-                              }
-                              {el.type == "link" &&
-                                <a href={el.url}>{el.url}</a>
-                              }
-                              <br/>
-                            </React.Fragment>
-                          )
-                        })}
-                      </React.Fragment>
-                    )
-                  })}
-                </React.Fragment>
-              )
-            })}
-          </p>
-
-          <ul>
-            {files && files.length && files.map((file, key) => {
-              return (
-                <li key={key}>
-                  <a href={file.permalink} target="_blank">{file.title}</a>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        {/* 添付ファイル */}
+        <Files files={files} />
 
       </section>
     )
