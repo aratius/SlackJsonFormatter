@@ -12,20 +12,27 @@ export default class SlackView extends React.Component{
   constructor(props: Props) {
     super(props)
     this.state = {
-      messaageData: []
+      messageData: []
     }
   }
 
   handleReadFile = (e: any) => {
-    const reader = new FileReader()
-    reader.onload = (event: any) => {
-      const messages = JSON.parse(event.target.result);
+    for(let i = 0; i < e.target.files.length; i++) {
+      const reader = new FileReader()
+      reader.onload = (event: any) => {
+        const messages = JSON.parse(event.target.result);
+        const data = this.state.messageData.length > 0 ? messages.concat(this.state.messageData) : messages
 
-      this.setState({
-        messageData: messages
-      })
+        this.setState({
+          ...this.state,
+          messageData: data
+        })
+      }
+
+      reader.readAsText(e.target.files[i])
     }
-    reader.readAsText(e.target.files[0])
+
+    console.log(this.state.messageData);
 
   }
 

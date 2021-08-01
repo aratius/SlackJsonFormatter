@@ -13,7 +13,9 @@ export const getMessageArray = (blocks: Blocks[]): MessageElement[] => {
         const el = el1.elements[k]
         messageArray.push({
           type: el.type,
-          text: el.text
+          text: el.text,
+          url: el.url,
+          channel_id: el.channel_id
         })
       }
     }
