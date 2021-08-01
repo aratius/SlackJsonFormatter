@@ -16,6 +16,7 @@ export default class MessageRouter extends Component<Props> {
       notify: (msg: any): boolean => !("blocks" in msg)
     }
 
+
     if(messageTypes.message(data)) {
       // 普通のメッセージのとき
 
