@@ -40,21 +40,19 @@ export default class ChannelDetail extends Component<Props> {
                     />
                 </div>
                 <article className={styles.contents}>
-                    <ul>
-                        {
-                            messageData &&
-                            // messageData.length > 0 &&
-                            messageData.map((data: any, key: any) => {
-                                return(
-                                    <Fragment key={key}>
-                                        <MessageRouter
-                                            data={data}
-                                        />
-                                    </Fragment>
-                                )
-                            })
-                        }
-                    </ul>
+                    {
+                        messageData &&
+                        // messageData.length > 0 &&
+                        messageData.map((data: any, key: any) => {
+                            return(
+                                <Fragment key={key}>
+                                    <MessageRouter
+                                        data={data}
+                                    />
+                                </Fragment>
+                            )
+                        })
+                    }
                 </article>
             </section>
         )

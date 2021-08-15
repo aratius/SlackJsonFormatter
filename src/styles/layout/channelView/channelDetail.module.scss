@@ -19,5 +19,6 @@ $header-height: 60px;
         height: calc(100% - #{$header-height});
         flex: 1;
         overflow-y: scroll;
+
     }
 }

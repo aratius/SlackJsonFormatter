@@ -1,6 +1,7 @@
 import { Fragment, ReactElement } from "react";
 import { Component } from "react";
 import { MessageElement } from "../../../../config/interfaces";
+import styles from "../../../../../styles/layout/channelView/message.module.scss"
 
 interface Props {
   messageArray: MessageElement[]
@@ -13,18 +14,19 @@ export default class MessageBody extends Component<Props> {
 
     return (
       // メッセージボディ
-      <p>
+      <p className={styles.message}>
         {messageArray.map((el, key) => {
           return (
             <Fragment key={key}>
               {el.type == "channel" && el.channel_id}
               {el.type == "text" &&
-                <span>
+                <span className={styles.message__text}>
                   {el.text.split("\n").map((t: string, k: number) => {
                     return (
                       <Fragment key={k}>
-                        {t}
-                        <br/>
+                        <span className={styles.message__text__break}>
+                          {t}
+                        </span>
                       </Fragment>
                     )
                   })}
@@ -33,7 +35,6 @@ export default class MessageBody extends Component<Props> {
               {el.type == "link" &&
                 <a href={el.url}>{el.url}</a>
               }
-              <br/>
             </Fragment>
           )
         })}

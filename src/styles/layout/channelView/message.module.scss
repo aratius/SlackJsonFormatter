@@ -1,0 +1,91 @@
+@import "../../foundation/variables";
+
+$icon-height: 60px;
+
+.container {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background-color: $gray;
+    position: relative;
+    z-index: -100;
+    display: flex;
+
+    &::before {
+        content: "";
+        width: calc(100% - 30px);
+        height: auto;
+        margin: 0 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-bottom: 0.5px solid rgb(200, 200, 200);
+    }
+
+    .icon {
+        width: $icon-height;
+        height: $icon-height;
+        margin-right: 10px;
+        flex-shrink: 0;  // 縮まない
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid $black;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .contents {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .author {
+            width: auto;
+            height: $icon-height;
+            display: flex;
+            margin-bottom: 10px;
+
+            &__name {
+                margin-right: 5px;
+            }
+
+            &__time {
+
+            }
+        }
+
+        .message {
+            width: calc(100% - #{$icon-height} - 30px);
+            // テキスト折返し設定
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            position: relative;
+
+
+            &__text {
+                display: flex;
+                flex-direction: column;
+                line-height: 2;
+                &__break {
+
+                }
+            }
+
+            a {
+                position: relative;
+                z-index: 101;
+                border-bottom: 1px solid gray;
+                line-height: 1.5;
+                color: gray;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+}

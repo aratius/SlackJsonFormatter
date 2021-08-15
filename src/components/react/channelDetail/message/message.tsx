@@ -3,8 +3,9 @@ import { Blocks, File, MessageElement } from '../../../config/interfaces';
 import { getMessageArray } from '../../../utils/messageArray';
 import { getTime } from '../../../utils/timeFormatter';
 import Files from './formatter/files';
-import User from './formatter/user';
+import Author from './formatter/author';
 import MessageBody from './formatter/messageBody';
+import styles from "../../../../styles/layout/channelView/message.module.scss"
 
 export interface Props {
   data: {
@@ -44,23 +45,28 @@ export default class Message extends React.Component<Props> {
     const messageArray: MessageElement[] = getMessageArray(data.blocks)
 
     return (
-      <section>
-        {/* ユーザー情報 */}
-        <User
-          url={icon_url}
-          alt="[dummy]hoge"
-          name={name}
-          time={time}
-        />
+      <article className={styles.container}>
+        <h2 className={styles.icon}>
+          <img src={icon_url} alt="" />
+        </h2>
 
-        {/* メッセージボディ */}
-        <MessageBody
-          messageArray={messageArray}
-        />
+        <div className={styles.contents}>
 
-        {/* 添付ファイル */}
-        <Files files={files} />
-      </section>
+          {/* ユーザー情報 */}
+          <Author
+            name={name}
+            time={time}
+            />
+
+          {/* メッセージボディ */}
+          <MessageBody
+            messageArray={messageArray}
+            />
+
+          {/* 添付ファイル */}
+          <Files files={files} />
+        </div>
+      </article>
     )
   }
 
