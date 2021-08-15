@@ -5,7 +5,7 @@ $itemHeight: 40px;
 
 .container {
     width: 100%;
-    height: 100%;
+    height: auto;
     // siteHeaderとfileUploaderのH固定でこれ伸び縮みする
     flex: 1;
     // background-color: red;
@@ -23,8 +23,7 @@ $itemHeight: 40px;
 
     .channelList {
         width: 100%;
-        height: 100%;
-        min-height: calc(100% - #{$titleHeight});
+        height: calc(100% - #{$titleHeight});
         background-color: $gray;
         overflow-y: scroll;
 
