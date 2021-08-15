@@ -8,6 +8,9 @@ interface Props {
 
 export default class FileUploader extends Component<Props> {
 
+    chooseDir: any
+    chooseFile: any
+
     /**
      * ファイル選択
      */
@@ -23,7 +26,11 @@ export default class FileUploader extends Component<Props> {
 
         this.props.onChooseFile(messages)
 
-      }
+    }
+
+    private upload = (): void => {
+        this.chooseFile.click()
+    }
 
     render() {
         return (
@@ -36,6 +43,7 @@ export default class FileUploader extends Component<Props> {
                     directory=""
                     multiple
                     onChange={this.handleReadFile}
+                    ref={node => this.chooseDir = node}
                 />
                 {/* ファイル選択 */}
                 <input
@@ -43,10 +51,11 @@ export default class FileUploader extends Component<Props> {
                     name="hello"
                     multiple
                     onChange={this.handleReadFile}
+                    ref={node => this.chooseFile = node}
                 />
 
                 <p className={styles.upload}>
-                    <a href="#">Upload</a>
+                    <a href="#" onClick={this.upload}>Upload</a>
                 </p>
             </div>
         )
