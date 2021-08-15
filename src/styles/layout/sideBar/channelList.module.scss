@@ -9,7 +9,7 @@ $itemHeight: 40px;
     // siteHeaderとfileUploaderのH固定でこれ伸び縮みする
     flex: 1;
     // background-color: red;
-    overflow-y: scroll;
+    overflow-y: hidden;
     position: relative;
 
     .title {
@@ -23,9 +23,10 @@ $itemHeight: 40px;
 
     .channelList {
         width: 100%;
-        height: auto;
+        height: 100%;
         min-height: calc(100% - #{$titleHeight});
         background-color: $gray;
+        overflow-y: scroll;
 
         // 三点リーダーがflexで効かないための階層
         &__item {
