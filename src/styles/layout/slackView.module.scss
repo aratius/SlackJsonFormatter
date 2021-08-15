@@ -5,6 +5,7 @@
     height: 100vh;
     // background-color: red;
     display: flex;
+    flex-wrap: nowrap;
     color: $black;
 
     .sideBar {
@@ -19,7 +20,7 @@
     }
 
     .channelView {
-        width: 100px;
+        width: 0;
         height: 100%;
         flex: 1;
     }

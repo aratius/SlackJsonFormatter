@@ -33,7 +33,7 @@ export default class MessageBody extends Component<Props> {
                 </span>
               }
               {el.type == "link" &&
-                <a href={el.url}>{el.url}</a>
+                <a href={el.url} target="_blank">{el.url}</a>
               }
             </Fragment>
           )

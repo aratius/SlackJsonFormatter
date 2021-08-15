@@ -8,7 +8,7 @@ $icon-height: 60px;
     padding: 15px;
     background-color: $gray;
     position: relative;
-    z-index: -100;
+    z-index: 0;
     display: flex;
 
     &::before {
@@ -79,6 +79,7 @@ $icon-height: 60px;
             a {
                 position: relative;
                 z-index: 101;
+                text-decoration: none;
                 border-bottom: 1px solid gray;
                 line-height: 1.5;
                 color: gray;

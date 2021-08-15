@@ -7,17 +7,19 @@ $header-height: 60px;
     height: 100%;
     // background-color: purple;
     overflow-y: hidden;
+    position: relative;
 
     .header {
         width: 100%;
         height: $header-height;
         background-color: #fff;
-        border-bottom: 2px solid $black;
     }
 
     .contents {
+        width: 100%;
         height: calc(100% - #{$header-height});
-        flex: 1;
+        // flex: 1;
+        position: relative;
         overflow-y: scroll;
 
     }
