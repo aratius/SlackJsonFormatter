@@ -18,7 +18,8 @@ $itemHeight: 40px;
         padding-left: 15px;
         display: flex;
         align-items: center;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid $black;
+        color: $black;
     }
 
     .channelList {
@@ -43,6 +44,7 @@ $itemHeight: 40px;
                 overflow-x: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+                color: $black;
             }
         }
     }

@@ -1,8 +1,11 @@
+@import "../foundation/variables";
+
 .container {
     width: 100vw;
     height: 100vh;
     // background-color: red;
     display: flex;
+    color: $black;
 
     .sideBar {
         width: 300px;

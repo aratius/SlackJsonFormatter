@@ -29,6 +29,7 @@
             text-decoration: none;
             position: relative;
             transition: all 0.2s;
+            color: $black;
 
             &::before {
                 content: "";
