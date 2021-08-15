@@ -16,10 +16,22 @@ export default class ChannelList extends Component<Props> {
             <div className={styles.container}>
                 <h3 className={styles.title}>Channels</h3>
                 <ul className={styles.channelList}>
-                    <li>#test_channel</li>
-                    <li>#test_channel</li>
-                    <li>#test_channel</li>
-                    <li>#test_channel</li>
+                    <li className={styles.channelList__item}><span>#test_channeltest_channeltest_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
                 </ul>
             </div>
         )

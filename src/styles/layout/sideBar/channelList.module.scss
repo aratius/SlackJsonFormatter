@@ -1,6 +1,7 @@
 @import "../../foundation/variables";
 
-$titleHeight: 40px;
+$titleHeight: 50px;
+$itemHeight: 40px;
 
 .container {
     width: 100%;
@@ -8,6 +9,7 @@ $titleHeight: 40px;
     // siteHeaderとfileUploaderのH固定でこれ伸び縮みする
     flex: 1;
     // background-color: red;
+    overflow-y: scroll;
 
     .title {
         width: 100%;
@@ -20,7 +22,26 @@ $titleHeight: 40px;
 
     .channelList {
         width: 100%;
-        height: calc(100% - #{$titleHeight});
+        height: auto;
+        min-height: calc(100% - #{$titleHeight});
         background-color: $gray;
+
+        &__item {
+            width: calc(100% -  30px);
+            margin: 0 15px;
+            height: $itemHeight;
+            display: flex;
+            align-items: center;
+            border-bottom: 0.5px solid rgb(200, 200, 200);
+
+            span {
+                width: 100%;
+                height: auto;
+                display: inline-block;
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
     }
 }
