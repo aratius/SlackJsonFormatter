@@ -24,8 +24,11 @@ export default class SlackView extends React.Component<Props> {
     }
   }
 
+  /**
+   * チャンネル選択
+   */
   private onChooseChannel = (name: string): void => {
-
+    this.setState({targetChannel: name})
   }
 
   /**
@@ -44,8 +47,10 @@ export default class SlackView extends React.Component<Props> {
 
   render() {
 
-    // チャンネル種類計算するならここ
+    // チャンネル種類するならここ
     const channelNames: string[] = []
+    // チャンネル絞り込み
+    const channelDetail: Message[] = []
 
     return (
       <main className={styles.container}>

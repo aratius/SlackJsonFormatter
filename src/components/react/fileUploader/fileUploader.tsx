@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { getFiles } from "../../utils/file";
+import styles from "../../../styles/layout/sideBar/fileUploader.module.scss"
 
 interface Props {
     onChooseFile: Function
@@ -26,7 +27,7 @@ export default class FileUploader extends Component<Props> {
 
     render() {
         return (
-            <>
+            <div className={styles.container}>
                 <input
                     type="file"
                     name="hello"
@@ -43,7 +44,7 @@ export default class FileUploader extends Component<Props> {
                     multiple
                     onChange={this.handleReadFile}
                 />
-            </>
+            </div>
         )
     }
 

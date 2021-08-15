@@ -7,7 +7,6 @@ interface Props {
 export default class Top extends React.Component<Props> {
 
   render() {
-
     return (
       <>
         <SlackView/>
