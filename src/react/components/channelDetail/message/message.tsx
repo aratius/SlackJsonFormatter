@@ -1,7 +1,7 @@
 import React from 'react'
-import { Blocks, File, MessageElement } from '../../config/interfaces';
-import { getMessageArray } from '../../utils/messageArray';
-import { getTime } from '../../utils/timeFormatter';
+import { Blocks, File, MessageElement } from '../../../config/interfaces';
+import { getMessageArray } from '../../../utils/messageArray';
+import { getTime } from '../../../utils/timeFormatter';
 import Files from './formatter/files';
 import User from './formatter/user';
 import MessageBody from './formatter/messageBody';

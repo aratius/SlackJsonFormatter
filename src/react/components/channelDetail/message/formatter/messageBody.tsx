@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from "react";
 import { Component } from "react";
-import { MessageElement } from "../../../config/interfaces";
+import { MessageElement } from "../../../../config/interfaces";
 
 interface Props {
   messageArray: MessageElement[]

@@ -1,6 +1,6 @@
 import React from 'react'
 import { getFiles } from '../utils/file'
-import MessageRouter from './message/messageRouter'
+import MessageRouter from './channelDetail/message/messageRouter'
 
 interface Props{}
 
