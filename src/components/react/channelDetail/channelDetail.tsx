@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import { Message } from "../../config/interfaces";
 import ChannelHeader from "./channelHeader";
 import MessageRouter from "./message/messageRouter";
+import styles from "../../../styles/layout/channelView/channelDetail.module.scss"
 
 interface Props {
     messageData: Message[],
@@ -28,14 +29,17 @@ export default class ChannelDetail extends Component<Props> {
         const messageData = this.props.messageData
 
         return (
-            <>
-                {/* チャンネル名前と絞り込みなど */}
-                <ChannelHeader
-                    channelName={this.props.channelName}
-                    onSort={this.onSort}
-                    onSearch={this.onSearch}
-                />
-                <article>
+            <section className={styles.container}>
+
+                <div className={styles.header}>
+                    {/* チャンネル名前と絞り込みなど */}
+                    <ChannelHeader
+                        channelName={this.props.channelName}
+                        onSort={this.onSort}
+                        onSearch={this.onSearch}
+                    />
+                </div>
+                <article className={styles.contents}>
                     <ul>
                         {
                             messageData &&
@@ -52,7 +56,7 @@ export default class ChannelDetail extends Component<Props> {
                         }
                     </ul>
                 </article>
-            </>
+            </section>
         )
     }
 
