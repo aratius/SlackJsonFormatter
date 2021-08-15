@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+a {
+	-webkit-tap-highlight-color: transparent;
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+}
+
+body {
+	color: #222;
+	width: 100%;
+	background: #fff;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+}
