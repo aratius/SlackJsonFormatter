@@ -44,6 +44,8 @@ export default class FileUploader extends Component<Props> {
                     multiple
                     onChange={this.handleReadFile}
                 />
+
+                <p>Upload</p>
             </div>
         )
     }
