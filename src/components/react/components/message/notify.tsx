@@ -5,6 +5,9 @@ interface Props {
   data: any
 }
 
+/**
+ * メッセージじゃなくて、チャンネル入室とかの通知系のとき
+ */
 export default class Notify extends Component<Props> {
 
   render(): ReactElement {

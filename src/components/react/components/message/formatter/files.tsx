@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Component } from "react";
-import { File } from "../message";
+import { File } from "../../../config/interfaces";
 
 interface Props {
   files: File[]

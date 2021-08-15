@@ -1,5 +1,6 @@
 import React from 'react'
-import MessageRouter from './messageComponent/messageRouter'
+import { getFiles } from '../utils/file'
+import MessageRouter from './message/messageRouter'
 
 interface Props{}
 
@@ -17,26 +18,7 @@ export default class SlackView extends React.Component{
   }
 
   handleReadFile = async (e: any) => {
-    const messageTasks: any = []
-    console.log(e.target.files.length);
-
-    for(let i = 0; i < e.target.files.length; i++) {
-
-      messageTasks.push(new Promise<any>((res, rej) => {
-
-        const reader = new FileReader()
-        reader.onload = (event: any) => {
-          const msgs = JSON.parse(event.target.result);
-
-          res(msgs)
-        }
-
-        reader.readAsText(e.target.files[i])
-
-      }))
-    }
-
-    const files = await Promise.all(messageTasks)
+    const files = await getFiles(e)
     const messages: any = []
     for(const i in files) {
       const file: any = files[i]
@@ -55,9 +37,6 @@ export default class SlackView extends React.Component{
   }
 
   render() {
-
-    // TODO: チャンネルごとに分けて、日付順でソート
-    console.log(this.state.messageData);
 
     return (
       <>
