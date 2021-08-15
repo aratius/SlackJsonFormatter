@@ -45,7 +45,9 @@ export default class FileUploader extends Component<Props> {
                     onChange={this.handleReadFile}
                 />
 
-                <p>Upload</p>
+                <p className={styles.upload}>
+                    <a href="#">Upload</a>
+                </p>
             </div>
         )
     }
