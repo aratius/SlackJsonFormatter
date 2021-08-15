@@ -36,6 +36,7 @@ $itemHeight: 40px;
             display: flex;
             align-items: center;
             border-bottom: 0.5px solid rgb(200, 200, 200);
+            position: relative;
 
             &:last-child {
                 border-bottom: none;
@@ -44,12 +45,32 @@ $itemHeight: 40px;
             span {
                 width: 100%;
                 height: auto;
+                padding-right: 15px;
                 display: inline-block;
                 overflow-x: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 color: $black;
+                flex: 1;
+            }
+
+            &__delete {
+                width: 15px;
+                height: 15px;
+                // background-color: red;
+                position: relative;
+                background-image: url(/images/common/btn-delete.svg);  // ☓画像背景画像
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: all 0.2s;
+
+                &:hover {
+                    transform: rotate(90deg);
+                }
+
             }
         }
+
+
     }
 }
