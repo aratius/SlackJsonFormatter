@@ -1,5 +1,5 @@
 import React from 'react'
-import SlackView from '../react/components/slackView'
+import SlackView from '../components/react/slackView'
 
 interface Props {
 }
