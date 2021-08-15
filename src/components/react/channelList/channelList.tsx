@@ -32,6 +32,9 @@ export default class ChannelList extends Component<Props> {
                     <li className={styles.channelList__item}><span>#test_channel</span></li>
                     <li className={styles.channelList__item}><span>#test_channel</span></li>
                     <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
+                    <li className={styles.channelList__item}><span>#test_channel</span></li>
                 </ul>
             </div>
         )

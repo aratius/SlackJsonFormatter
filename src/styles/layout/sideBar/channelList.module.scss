@@ -5,11 +5,12 @@ $itemHeight: 40px;
 
 .container {
     width: 100%;
-    height: auto;
+    height: 100%;
     // siteHeaderとfileUploaderのH固定でこれ伸び縮みする
     flex: 1;
     // background-color: red;
     overflow-y: scroll;
+    position: relative;
 
     .title {
         width: 100%;
@@ -26,6 +27,7 @@ $itemHeight: 40px;
         min-height: calc(100% - #{$titleHeight});
         background-color: $gray;
 
+        // 三点リーダーがflexで効かないための階層
         &__item {
             width: calc(100% -  30px);
             margin: 0 15px;
