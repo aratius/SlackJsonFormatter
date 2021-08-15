@@ -27,7 +27,7 @@ export default class ChannelHeader extends Component<Props> {
 
                 {/* 検索ボックス onBlur nullで隠れる */}
                 <div className={styles.searchbox}>
-                    <input type="text" />
+                    <input name="search" type="text" placeholder="keyword" />
                 </div>
             </div>
         )
