@@ -14,8 +14,8 @@ export default class ChannelList extends Component<Props> {
     render() {
         return (
             <div className={styles.container}>
-                <h3>Channels</h3>
-                <ul>
+                <h3 className={styles.title}>Channels</h3>
+                <ul className={styles.channelList}>
                     <li>#test_channel</li>
                     <li>#test_channel</li>
                     <li>#test_channel</li>

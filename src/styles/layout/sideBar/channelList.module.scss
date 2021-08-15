@@ -1,7 +1,26 @@
+@import "../../foundation/variables";
+
+$titleHeight: 40px;
+
 .container {
+    width: 100%;
     height: auto;
     // siteHeaderとfileUploaderのH固定でこれ伸び縮みする
     flex: 1;
+    // background-color: red;
 
+    .title {
+        width: 100%;
+        height: $titleHeight;
+        padding-left: 15px;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid black;
+    }
 
+    .channelList {
+        width: 100%;
+        height: calc(100% - #{$titleHeight});
+        background-color: $gray;
+    }
 }
