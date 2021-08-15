@@ -1,6 +1,12 @@
 import { Component } from "react";
 
-export default class ChannelHeader extends Component {
+interface Props {
+    channelName: string,
+    onSort: Function,
+    onSearch: Function
+}
+
+export default class ChannelHeader extends Component<Props> {
 
     render() {
         return (

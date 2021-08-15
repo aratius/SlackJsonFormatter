@@ -1,19 +1,18 @@
 import React from 'react'
 import { Message } from '../config/interfaces'
-import { getFiles } from '../utils/file'
 import ChannelDetail from './channelDetail/channelDetail'
-import MessageRouter from './channelDetail/message/messageRouter'
 import ChannelList from './channelList/channelList'
 import FileUploader from './fileUploader/fileUploader'
 import SiteHeader from './siteHeader/siteHeader'
+import styles from "../../styles/layout/slackView.module.scss"
 
 interface Props{}
 
-export default class SlackView extends React.Component{
+export default class SlackView extends React.Component<Props> {
 
   state: {
     messageData: Message[],
-    targetChannel: string
+    targetChannel: string,
     [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
   }
 
@@ -23,6 +22,10 @@ export default class SlackView extends React.Component{
       messageData: [],
       targetChannel: "#hoge"
     }
+  }
+
+  private onChooseChannel = (name: string): void => {
+
   }
 
   /**
@@ -41,15 +44,21 @@ export default class SlackView extends React.Component{
 
   render() {
 
+    // チャンネル種類計算するならここ
+    const channelNames: string[] = []
+
     return (
-      <main>
+      <main className={styles.container}>
         {/* LEFT */}
-        <div>
+        <div className={styles.sideBar}>
           {/* サイトのタイトル */}
           <SiteHeader />
 
           {/* チャンネル一覧 */}
-          <ChannelList />
+          <ChannelList
+            channelNames={channelNames}
+            onChooseChannel={this.onChooseChannel}
+          />
 
           {/* ファイルアップロードUI */}
           <FileUploader
@@ -58,12 +67,12 @@ export default class SlackView extends React.Component{
         </div>
 
         {/* RIGHT */}
-        <div>
+        <div className={styles.channelView}>
           {/* チャンネル詳細 */}
           <ChannelDetail
             messageData={this.state.messageData}
+            channelName={this.state.targetChannel}
           />
-
         </div>
       </main>
     )
