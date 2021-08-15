@@ -37,6 +37,10 @@ $itemHeight: 40px;
             align-items: center;
             border-bottom: 0.5px solid rgb(200, 200, 200);
 
+            &:last-child {
+                border-bottom: none;
+            }
+
             span {
                 width: 100%;
                 height: auto;
