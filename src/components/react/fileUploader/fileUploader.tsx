@@ -63,14 +63,16 @@ export default class FileUploader extends Component<Props> {
         }
         const files = await parseJSONFromFiles(e.dataTransfer.files)
 
-        this.submitMessages(files)
     }
 
     /**
      * ファイル選択
      */
     private handleReadFile = async (e: any) => {
+        console.log(e);
         const files = await parseJSONFromFiles(e.target.files)
+        // 正規表現でぱいすの相対パスのスラッシュイカを削除してむりやりチャンネル名取得
+
         this.submitMessages(files)
     }
 
@@ -89,7 +91,7 @@ export default class FileUploader extends Component<Props> {
     }
 
     private upload = (): void => {
-        this.chooseFile.click()
+        this.chooseDir.click()
     }
 
     render() {

@@ -1,5 +1,4 @@
-// import fs from 'fs'
-const fs = process.browser ? undefined : require("fs")
+import fs from 'fs'
 
 export const getJson = async (dirPath: string): Promise<JSON> => {
   const paths: any = await fs.readFile(dirPath, "utf-8", (data: any)=>data)
@@ -12,6 +11,10 @@ export const getJson = async (dirPath: string): Promise<JSON> => {
 export const parseJSONFromFiles = async (_files: any): Promise<any> => {
   const messageTasks: any = []
 
+  // ファイルの名前が 2XXX から始まるものだけに限定する
+  const isMsgJSON: RegExp = /^2[0-9].{3}/
+  _files = [..._files].filter((data: any) => data.name.search(isMsgJSON) >= 0)
+
   for(let i = 0; i < _files.length; i++) {
 
     messageTasks.push(new Promise<any>((res, rej) => {
@@ -19,6 +22,11 @@ export const parseJSONFromFiles = async (_files: any): Promise<any> => {
       const reader = new FileReader()
       reader.onload = (event: any) => {
         const msgs = JSON.parse(event.target.result);
+
+        // channelName無いので無理やり追加
+        const path: string = _files[i].webkitRelativePath
+        const channelName = path.replace(/\/.*/, "")
+        msgs[0]["channel"] = channelName
 
         res(msgs)
       }
