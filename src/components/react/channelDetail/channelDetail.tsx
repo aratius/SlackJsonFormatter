@@ -13,6 +13,17 @@ interface Props {
 
 export default class ChannelDetail extends Component<Props> {
 
+    state: {
+        searchText: string
+    }
+
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            searchText: ""
+        }
+    }
+
     /**
      * 並べ替え
      */
@@ -24,12 +35,19 @@ export default class ChannelDetail extends Component<Props> {
      * 文字検索
      */
     private onSearch = (text: string): void => {
-
+        this.setState({
+            ...this.state,
+            searchText: text
+        })
     }
 
     render() {
-        const messageData = this.props.messageData
-        console.log(messageData);
+        let messageData = this.props.messageData
+        // 検索文字列でフィルタ
+        messageData = messageData.filter((data) => {
+            return data.text.indexOf(this.state.searchText) >= 0
+        })
+
         let lastLoopDate = ""
 
         return (
