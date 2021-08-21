@@ -45,6 +45,10 @@ $itemHeight: 40px;
                 background-color: #fff;
             }
 
+            &.selected {
+                background-color: #fff;
+            }
+
             &::before {
                 content: "";
                 width: calc(100% - 30px);

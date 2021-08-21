@@ -39,6 +39,9 @@ export default class SlackView extends React.Component<Props> {
 
   }
 
+  /**
+   * イベント削除
+   */
   private onDeleteChannel = (e: any, name: string): void => {
     // イベント伝播禁止
     if(e) e.stopPropagation()
@@ -54,17 +57,16 @@ export default class SlackView extends React.Component<Props> {
 
     this.setState({
       ...this.state,
-      messageData: messages
+      messageData: messages,
+      targetChannel: messages[0].team
     })
 
   }
 
   render() {
 
-    // console.log(JSON.stringify(this.state.messageData).toString());
-
     // const messages: any[] = jsons
-    const messages: any[] = this.state.messageData  // NOTE: 本番はこれ
+    const messages: Message[] = this.state.messageData  // NOTE: 本番はこれ
 
     console.log(messages)
 
@@ -74,7 +76,7 @@ export default class SlackView extends React.Component<Props> {
     channelNames = Array.from(new Set(channelNames))
 
     // チャンネル絞り込み
-    const channelDetail: Message[] = []
+    const channelMessages: Message[] = messages.filter((data) => data.team == this.state.targetChannel)
 
     return (
       <main className={styles.container}>
@@ -86,6 +88,7 @@ export default class SlackView extends React.Component<Props> {
           {/* チャンネル一覧 */}
           <ChannelList
             channelNames={channelNames}
+            targetChannel={this.state.targetChannel}
             onChooseChannel={this.onChooseChannel}
             onDeleteChannel={this.onDeleteChannel}
           />
@@ -100,7 +103,7 @@ export default class SlackView extends React.Component<Props> {
         <div className={styles.channelView}>
           {/* チャンネル詳細 */}
           <ChannelDetail
-            messageData={messages}
+            messageData={channelMessages}
             channelName={this.state.targetChannel}
           />
         </div>
