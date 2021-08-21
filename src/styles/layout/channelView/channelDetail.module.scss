@@ -21,9 +21,15 @@ $header-height: 60px;
         // flex: 1;
         position: relative;
         overflow-y: scroll;
+        background-color: $gray;
 
         .date {
+            width: 100%;
+            display: inline-block;
             padding-left: 15px;
+            background-color: #fff;
+            border-top: 1px solid black;
+            // border-bottom: 1px solid black;
         }
 
     }

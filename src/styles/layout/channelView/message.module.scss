@@ -29,6 +29,10 @@ $icon-height: 60px;
         border-bottom: 0.5px solid rgb(200, 200, 200);
     }
 
+    .notifier {
+        line-height: 1.5;
+    }
+
     .icon {
         width: $icon-height;
         height: $icon-height;
@@ -76,7 +80,7 @@ $icon-height: 60px;
             &__text {
                 display: flex;
                 flex-direction: column;
-                line-height: 2;
+                line-height: 1.5;
                 &__break {
 
                 }

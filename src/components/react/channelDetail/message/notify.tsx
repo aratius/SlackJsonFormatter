@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Component } from "react";
+import styles from "../../../../styles/layout/channelView/message.module.scss"
 
 interface Props {
   data: any,
@@ -14,8 +15,9 @@ export default class Notify extends Component<Props> {
     const data = this.props.data
 
     return(
-      <></>
-      // <>{data.text}</>
+      <article className={styles.container}>
+        <p className={styles.notifier}>{data.text}</p>
+      </article>
     )
   }
 
