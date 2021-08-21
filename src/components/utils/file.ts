@@ -30,11 +30,8 @@ export const parseJSONFromFiles = async (_files: any): Promise<any> => {
         // 親ディレクトリ名あれば取り除く
         channelName = channelName.replace(/.*\//, "")
 
-        for(const i in msgs) {
+        for(const i in msgs)
           msgs[i]["channel"] = channelName
-        }
-
-        console.log(channelName);
 
         res(msgs)
       }
