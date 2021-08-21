@@ -12,6 +12,8 @@ $itemHeight: 40px;
     overflow-y: hidden;
     position: relative;
 
+
+
     .title {
         width: 100%;
         height: $titleHeight;
@@ -30,13 +32,29 @@ $itemHeight: 40px;
 
         // 三点リーダーがflexで効かないための階層
         &__item {
-            width: calc(100% -  30px);
-            margin: 0 15px;
+            width: calc(100%);
+            padding: 0 15px;
             height: $itemHeight;
             display: flex;
             align-items: center;
-            border-bottom: 0.5px solid rgb(200, 200, 200);
+            // border-bottom: 0.5px solid rgb(200, 200, 200);
             position: relative;
+            transition: 0.1s background-color;
+
+            &:hover {
+                background-color: #fff;
+            }
+
+            &::before {
+                content: "";
+                width: calc(100% - 30px);
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 15px;
+                right: 15px;
+                border-bottom: 0.5px solid rgb(200, 200, 200);
+            }
 
             &:last-child {
                 border-bottom: none;

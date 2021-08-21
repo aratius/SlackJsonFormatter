@@ -23,7 +23,7 @@ body {
 
 // スクロールバーあるなしのトランジション見栄えダウンを防ぐ
 html {
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 * {
