@@ -52,8 +52,8 @@ export default class SlackView extends React.Component<Props> {
 
     // console.log(JSON.stringify(this.state.messageData).toString());
 
-    const messages: any[] = jsons
-    // const messages: any[] = this.state.messageData  // NOTE: 本番はこれ
+    // const messages: any[] = jsons
+    const messages: any[] = this.state.messageData  // NOTE: 本番はこれ
 
     // チャンネル種類するならここ
     const channelNames: string[] = []
