@@ -59,12 +59,6 @@ export default class ChannelHeader extends Component<Props> {
                 <div className={styles.container}>
                     <h3 className={styles.channelName}>#channel_test</h3>
                     <div className={styles.detailedSearch}>
-                        <p className={styles.detailedSearch__sort}>
-                            <select name="sort" id="">
-                                <option value="date">date</option>
-                                <option value="person">person</option>
-                            </select>
-                        </p>
                         <p className={styles.detailedSearch__search}>
                             <a href="#" onClick={this.onClickSearch}></a>
                         </p>
