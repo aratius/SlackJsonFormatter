@@ -25,7 +25,11 @@ export const parseJSONFromFiles = async (_files: any): Promise<any> => {
 
         // channelName無いので無理やり追加
         const path: string = _files[i].webkitRelativePath
-        const channelName = path.replace(/\/.*/, "")
+        // ファイル名を取り除く
+        let channelName = path.replace(/\/[^\/]+$/, "")
+        // 親ディレクトリ名あれば取り除く
+        channelName = channelName.replace(/.*\//, "")
+
         msgs[0]["channel"] = channelName
 
         res(msgs)

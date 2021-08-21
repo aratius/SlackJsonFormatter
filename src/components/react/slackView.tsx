@@ -28,7 +28,6 @@ export default class SlackView extends React.Component<Props> {
       messageData: [],
       targetChannel: "#hoge"
     }
-
   }
 
   /**
@@ -60,7 +59,6 @@ export default class SlackView extends React.Component<Props> {
       messageData: messages,
       targetChannel: messages[0].channel
     })
-
   }
 
   render() {
@@ -69,7 +67,7 @@ export default class SlackView extends React.Component<Props> {
     // 日付ソート
     messages = messages.sort((data1, data2) => Number(data1.ts) - Number(data2.ts))
 
-    // チャンネル種類するならここ
+    // チャンネル種類
     let channelNames: string[] = messages.map((data) => data.channel)
     // 重複削除
     channelNames = Array.from(new Set(channelNames))
