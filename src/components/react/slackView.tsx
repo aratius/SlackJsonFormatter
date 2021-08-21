@@ -40,11 +40,18 @@ export default class SlackView extends React.Component<Props> {
   }
 
   /**
-   * イベント削除
+   * チャンネル削除
    */
   private onDeleteChannel = (e: any, name: string): void => {
     // イベント伝播禁止
     if(e) e.stopPropagation()
+    let messageData = [...this.state.messageData]
+    messageData = messageData.filter((data) => data.channel != name)
+    this.setState({
+      ...this.state,
+      messageData: messageData
+    })
+
   }
 
   /**

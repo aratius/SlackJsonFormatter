@@ -13,6 +13,9 @@ export default class ChannelHeader extends Component<Props> {
     private inputArea: HTMLInputElement = null
     private isShowingSearchBox: boolean = false
 
+    /**
+     * 検索ボックスを表示
+     */
     private showSearchBox(): void {
         if(this.searchBox == null) return
         if(!(this.searchBox.classList.contains(styles.hide))) {
@@ -21,6 +24,9 @@ export default class ChannelHeader extends Component<Props> {
         this.isShowingSearchBox = true
     }
 
+    /**
+     * 検索ボックスを隠す
+     */
     private hideSearchBox(): void {
         if(this.searchBox == null) return
         if(this.searchBox.classList.contains(styles.hide)){
@@ -39,6 +45,9 @@ export default class ChannelHeader extends Component<Props> {
         this.isShowingSearchBox ? this.hideSearchBox() : this.showSearchBox()
     }
 
+    /**
+     * inputの値が変わったとき
+     */
     private onChangeInput: FormEventHandler = (e: any = null) => {
         if(e && e.cancelable) e.preventDefault()
         this.props.onSearch(this.inputArea.value)
