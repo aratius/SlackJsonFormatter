@@ -9,10 +9,10 @@ export const getJson = async (dirPath: string): Promise<JSON> => {
 }
 
 
-export const getFiles = async (e: any): Promise<any> => {
+export const parseJSONFromFiles = async (_files: any): Promise<any> => {
   const messageTasks: any = []
 
-  for(let i = 0; i < e.target.files.length; i++) {
+  for(let i = 0; i < _files.length; i++) {
 
     messageTasks.push(new Promise<any>((res, rej) => {
 
@@ -23,7 +23,7 @@ export const getFiles = async (e: any): Promise<any> => {
         res(msgs)
       }
 
-      reader.readAsText(e.target.files[i])
+      reader.readAsText(_files[i])
 
     }))
   }

@@ -1,21 +1,83 @@
 import { Component } from "react";
-import { getFiles } from "../../utils/file";
+import { parseJSONFromFiles } from "../../utils/file";
 import styles from "../../../styles/layout/sideBar/fileUploader.module.scss"
 
 interface Props {
     onChooseFile: Function
 }
 
+class DropState {
+    static onDragOver: string = "ondragover"
+    static onDragLeave: string = "ondragleave"
+    static onDrop: string = "ondrop"
+}
+
 export default class FileUploader extends Component<Props> {
 
+    dropArea: HTMLElement
     chooseDir: any
     chooseFile: any
+
+    private onReadyDropArea = (node: HTMLElement) => {
+        if(node == null) return
+        this.dropArea = node
+    }
+
+    private onDragOver = (e: any) => {
+        this.addClassNameOnDropArea(e, DropState.onDragOver)
+    }
+
+    private onDragLeave = (e: any) => {
+        this.addClassNameOnDropArea(e, DropState.onDragLeave)
+    }
+
+
+    /**
+     *
+     */
+    private addClassNameOnDropArea(e: any, name: string) {
+        if(e) {
+            e.stopPropagation()
+            e.preventDefault()
+        }
+        if(this.dropArea == null) return
+        if(name == DropState.onDragOver) {
+            if(!(this.dropArea.classList.contains(styles.onDragOver))) {
+                this.dropArea.classList.add(styles.onDragOver)
+            }
+        }else if(name == DropState.onDragLeave) {
+            if(this.dropArea.classList.contains(styles.onDragOver)) {
+                this.dropArea.classList.remove(styles.onDragOver)
+            }
+        }
+    }
+
+    /**
+     * ファイルドロップ
+     * ディレクトリには非対応
+     */
+     private onDrop = async (e: any) => {
+        if(e) {
+            e.stopPropagation()
+            e.preventDefault()
+        }
+        const files = await parseJSONFromFiles(e.dataTransfer.files)
+
+        this.submitMessages(files)
+    }
 
     /**
      * ファイル選択
      */
     private handleReadFile = async (e: any) => {
-        const files = await getFiles(e)
+        const files = await parseJSONFromFiles(e.target.files)
+        this.submitMessages(files)
+    }
+
+    /**
+     * ファイル配列からメッセージイベントを上に伝播させる
+     */
+    private submitMessages(files: any): void {
         const messages: any = []
         for(const i in files) {
           const file: any = files[i]
@@ -23,9 +85,7 @@ export default class FileUploader extends Component<Props> {
             messages.push(file[j])
           }
         }
-
         this.props.onChooseFile(messages)
-
     }
 
     private upload = (): void => {
@@ -34,7 +94,7 @@ export default class FileUploader extends Component<Props> {
 
     render() {
         return (
-            <div className={styles.container}>
+            <div className={styles.container} ref={this.onReadyDropArea} onDragOver={this.onDragOver} onDragLeave={this.onDragLeave} onDrop={this.onDrop}>
                 <input
                     type="file"
                     name="hello"

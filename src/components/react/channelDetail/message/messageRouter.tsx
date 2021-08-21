@@ -17,15 +17,13 @@ export default class MessageRouter extends Component<Props> {
     }
 
 
-    if(messageTypes.message(data)) {
+    if(messageTypes.message(data))
       // 普通のメッセージのとき
-
       return <Message data={data} />
-    } else if (messageTypes.notify(data)) {
+    else if (messageTypes.notify(data))
       // 通知系のとき
-
       return <Notify data={data} />
-    }
+
 
     return(<></>)
   }

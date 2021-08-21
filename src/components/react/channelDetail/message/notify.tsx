@@ -14,7 +14,8 @@ export default class Notify extends Component<Props> {
     const data = this.props.data
 
     return(
-      <>{data.text}</>
+      <></>
+      // <>{data.text}</>
     )
   }
 
