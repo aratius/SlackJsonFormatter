@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Component } from "react";
 
 interface Props {
-  data: any
+  data: any,
 }
 
 /**

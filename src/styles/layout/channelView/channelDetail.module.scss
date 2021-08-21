@@ -22,5 +22,9 @@ $header-height: 60px;
         position: relative;
         overflow-y: scroll;
 
+        .date {
+            padding-left: 15px;
+        }
+
     }
 }

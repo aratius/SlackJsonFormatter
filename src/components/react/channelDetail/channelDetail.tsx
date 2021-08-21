@@ -3,11 +3,13 @@ import { Message } from "../../config/interfaces";
 import ChannelHeader from "./channelHeader";
 import MessageRouter from "./message/messageRouter";
 import styles from "../../../styles/layout/channelView/channelDetail.module.scss"
+import { getDate } from "../../utils/timeFormatter";
 
 interface Props {
     messageData: Message[],
     channelName: string,
 }
+
 
 export default class ChannelDetail extends Component<Props> {
 
@@ -27,6 +29,8 @@ export default class ChannelDetail extends Component<Props> {
 
     render() {
         const messageData = this.props.messageData
+        console.log(messageData);
+        let lastLoopDate = ""
 
         return (
             <section className={styles.container}>
@@ -42,10 +46,13 @@ export default class ChannelDetail extends Component<Props> {
                 <article className={styles.contents}>
                     {
                         messageData &&
-                        // messageData.length > 0 &&
                         messageData.map((data: any, key: any) => {
+                            const date = getDate(data.ts)
+                            let acrossDate: boolean = date != lastLoopDate
+                            lastLoopDate = date
                             return(
                                 <Fragment key={key}>
+                                    {acrossDate && <span className={styles.date}>{date}</span>}
                                     <MessageRouter
                                         data={data}
                                     />

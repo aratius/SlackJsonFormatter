@@ -3,7 +3,7 @@ import Message from "./message";
 import Notify from "./notify";
 
 interface Props {
-  data: any
+  data: any,
 }
 
 export default class MessageRouter extends Component<Props> {

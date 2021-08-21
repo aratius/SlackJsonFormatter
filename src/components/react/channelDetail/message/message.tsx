@@ -1,7 +1,7 @@
 import React from 'react'
 import { Blocks, File, MessageElement } from '../../../config/interfaces';
 import { getMessageArray } from '../../../utils/messageArray';
-import { getTime } from '../../../utils/timeFormatter';
+import { getDate, getTime } from '../../../utils/timeFormatter';
 import Files from './formatter/files';
 import Author from './formatter/author';
 import MessageBody from './formatter/messageBody';
@@ -18,7 +18,7 @@ export interface Props {
     user: string
     blocks: Blocks[]
     files?: File[]
-  }
+  },
   [extraProps: string]: any; // これでどんな属性も受け取れるようになる。
 }
 

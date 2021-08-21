@@ -66,9 +66,9 @@ export default class SlackView extends React.Component<Props> {
   render() {
 
     // const messages: any[] = jsons
-    const messages: Message[] = this.state.messageData  // NOTE: 本番はこれ
-
-    console.log(messages)
+    let messages: Message[] = this.state.messageData  // NOTE: 本番はこれ
+    // 日付ソート
+    messages = messages.sort((data1, data2) => Number(data1.ts) - Number(data2.ts))
 
     // チャンネル種類するならここ
     let channelNames: string[] = messages.map((data) => data.team)

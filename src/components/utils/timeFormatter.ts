@@ -12,3 +12,9 @@ export const getTime = (ts: string): string => {
 
   return m.format("HH:mm (ddd)")
 }
+
+export const getDate = (ts: string): string => {
+  const m = moment.unix(Math.round(Number(ts)))
+
+  return m.format("MM/DD")
+}
