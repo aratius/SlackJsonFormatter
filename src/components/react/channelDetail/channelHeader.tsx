@@ -57,7 +57,7 @@ export default class ChannelHeader extends Component<Props> {
         return (
             <>
                 <div className={styles.container}>
-                    <h3 className={styles.channelName}>#channel_test</h3>
+                    <h3 className={styles.channelName}>#{this.props.channelName}</h3>
                     <div className={styles.detailedSearch}>
                         <p className={styles.detailedSearch__search}>
                             <a href="#" onClick={this.onClickSearch}></a>

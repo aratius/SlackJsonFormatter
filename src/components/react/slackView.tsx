@@ -25,7 +25,7 @@ export default class SlackView extends React.Component<Props> {
     super(props)
     this.state = {
       messageData: [],
-      targetChannel: "#hoge"
+      targetChannel: ""
     }
   }
 
