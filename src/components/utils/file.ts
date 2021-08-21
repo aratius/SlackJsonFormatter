@@ -1,11 +1,11 @@
-import fs from 'fs'
+// import fs from 'fs'
 
-export const getJson = async (dirPath: string): Promise<JSON> => {
-  const paths: any = await fs.readFile(dirPath, "utf-8", (data: any)=>data)
-  const json = JSON.parse(paths.toString())
+// export const getJson = async (dirPath: string): Promise<JSON> => {
+//   const paths: any = await fs.readFile(dirPath, "utf-8", (data: any)=>data)
+//   const json = JSON.parse(paths.toString())
 
-  return json
-}
+//   return json
+// }
 
 
 export const parseJSONFromFiles = async (_files: any): Promise<any> => {
