@@ -8,7 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid $black;
+    border-bottom: 1px solid $black;
 
     // タイトルとロゴ
     h1 {
@@ -24,7 +24,7 @@
             height: 100%;
             margin-right: 5px;
             border-radius: 10px;
-            border: 2px solid $black;
+            border: 1px solid $black;
             background-color: $orange;
             animation: logoAnim;
             animation-duration: 15s;
@@ -43,7 +43,7 @@
         margin-right: 15px;
         position: relative;
         border-radius: 10px;
-        border: 2px solid $black;
+        border: 1px solid $black;
 
         &::before {
             content: "?";
