@@ -8,7 +8,7 @@ export default class SiteHeader extends Component {
             <div className={styles.container}>
                 <h1>
                     <span className={styles.logo}></span>
-                    <span className={styles.title}>Slack Formatter</span>
+                    <a href="https://github.com/aratius/SlackJsonFormatter" target="_blank" className={styles.title}>Slack Formatter</a>
                 </h1>
                 <p className={styles.help}>
                     <a target="_blank" href="https://github.com/aratius/SlackJsonFormatter/blob/develop/HELP.md"></a>
