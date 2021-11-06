@@ -1,4 +1,5 @@
 # 使い方ヘルプ
+![スクリーンショット 2021-11-06 21 17 59](https://user-images.githubusercontent.com/59504416/140609309-49ca6316-64ee-43a5-8f08-705fcca6e6d6.png)
 
 ## Slackのログを見る方法
 1. Slack保管庫(GoogleDrive)から見たい期間のzipファイルをダウンロードし、PC上で解凍しておく
