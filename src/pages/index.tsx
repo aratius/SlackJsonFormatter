@@ -24,6 +24,7 @@ export default class Top extends React.Component<Props> {
           <link rel="icon" href="https://slack-json-formatter.vercel.app/favicons/favicon.ico"></link>
         </Head>
         <SlackView />
+        <img src="https://slack-json-formatter.vercel.app/images/og.png" style={{display: "none"}}/>
       </>
     )
   }
