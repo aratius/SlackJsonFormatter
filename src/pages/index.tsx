@@ -18,7 +18,7 @@ export default class Top extends React.Component<Props> {
           <meta property="og:title" content="Slack JSON Formatter" />
           <meta property="og:description" content="JSON Formatter for slack app. " />
           <meta property="og:site_name" content="Slack JSON Formatter" />
-          <meta property="og:image" key="ogImage" content="https://slack-json-formatter.vercel.app/assets/images/og.png" />
+          <meta property="og:image" key="ogImage" content="https://slack-json-formatter.vercel.app/images/og.png" />
           <meta name="twitter:card" key="twitterCard" content="summary_large_image" />
           <meta name="twitter:site" content="@aualrxse" />
           <link rel="icon" href="https://slack-json-formatter.vercel.app/favicons/favicon.ico"></link>
