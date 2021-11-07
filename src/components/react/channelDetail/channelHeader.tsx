@@ -18,8 +18,8 @@ export default class ChannelHeader extends Component<Props> {
      */
     private showSearchBox(): void {
         if(this.searchBox == null) return
-        if(!(this.searchBox.classList.contains(styles.hide))) {
-            this.searchBox.classList.add(styles.hide)
+        if(this.searchBox.classList.contains(styles.hide)) {
+            this.searchBox.classList.remove(styles.hide)
         }
         this.isShowingSearchBox = true
     }
@@ -29,8 +29,8 @@ export default class ChannelHeader extends Component<Props> {
      */
     private hideSearchBox(): void {
         if(this.searchBox == null) return
-        if(this.searchBox.classList.contains(styles.hide)){
-            this.searchBox.classList.remove(styles.hide)
+        if(!(this.searchBox.classList.contains(styles.hide))){
+            this.searchBox.classList.add(styles.hide)
         }
         this.isShowingSearchBox = false
         this.inputArea.value = ""
