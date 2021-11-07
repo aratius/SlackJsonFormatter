@@ -20,6 +20,6 @@
 <img width="121" alt="スクリーンショット 2021-11-07 16 28 32" src="https://user-images.githubusercontent.com/59504416/140636381-326ef51b-d4c2-42ea-8d71-e28d4271cae8.png">
 
 - 正規表現が使えます。
-- 大文字小文字を区別しません。
+- 正規表現は、大文字小文字を区別しません。
 
 © slack json formatter | 2021

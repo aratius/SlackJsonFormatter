@@ -58,6 +58,7 @@ export default class ChannelDetail extends Component<Props> {
         messageData = messageData.filter((data) => {
             try {
                 const reg: RegExp = new RegExp(this.state.searchText, "i")
+
                 return data.text.match(reg) != null
             } catch(err) {
                 return false
