@@ -56,7 +56,12 @@ export default class ChannelDetail extends Component<Props> {
         let messageData = this.props.messageData
         // 検索文字列でフィルタ
         messageData = messageData.filter((data) => {
-            return data.text.indexOf(this.state.searchText) >= 0
+            try {
+                const reg: RegExp = new RegExp(this.state.searchText, "i")
+                return data.text.match(reg) != null
+            } catch(err) {
+                return false
+            }
         })
 
         let lastLoopDate = ""
