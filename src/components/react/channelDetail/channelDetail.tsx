@@ -4,7 +4,9 @@ import ChannelHeader from "./channelHeader";
 import MessageRouter from "./message/messageRouter";
 import styles from "../../../styles/layout/channelView/channelDetail.module.scss"
 import { getDate } from "../../utils/timeFormatter";
-
+import gsap from "gsap"
+const ScrollToPlugin = process.browser ? require("gsap/ScrollToPlugin") : undefined
+process.browser && gsap.registerPlugin(ScrollToPlugin)
 interface Props {
     messageData: Message[],
     channelName: string,
@@ -13,6 +15,8 @@ interface Props {
 
 export default class ChannelDetail extends Component<Props> {
 
+    private contents: HTMLElement = null
+    private scrollTween: GSAPTween = null
     state: {
         searchText: string
     }
@@ -41,6 +45,13 @@ export default class ChannelDetail extends Component<Props> {
         })
     }
 
+    public scrollTop(): void {
+        if(this.contents != null) {
+            if(this.scrollTween != null) this.scrollTween.kill()
+            this.scrollTween = gsap.to(this.contents, {scrollTo: {y: 0}, duration: 0.5})
+        }
+    }
+
     render() {
         let messageData = this.props.messageData
         // 検索文字列でフィルタ
@@ -61,7 +72,7 @@ export default class ChannelDetail extends Component<Props> {
                         onSearch={this.onSearch}
                     />
                 </div>
-                <article className={styles.contents}>
+                <article className={styles.contents} ref={node => this.contents = node}>
                     {
                         messageData &&
                         messageData.map((data: any, key: any) => {

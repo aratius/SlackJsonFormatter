@@ -15,6 +15,7 @@ interface Props{
 
 export default class SlackView extends React.Component<Props> {
 
+  private detail: ChannelDetail = null
   state: {
     messageData: Message[],
     targetChannel: string,
@@ -36,6 +37,7 @@ export default class SlackView extends React.Component<Props> {
     // イベント伝播禁止
     if(e) e.stopPropagation()
     this.setState({targetChannel: name})
+    if(this.detail != null) this.detail.scrollTop()
   }
 
   /**
@@ -106,6 +108,7 @@ export default class SlackView extends React.Component<Props> {
         <div className={styles.channelView}>
           {/* チャンネル詳細 */}
           <ChannelDetail
+            ref={node => this.detail = node}
             messageData={channelMessages}
             channelName={this.state.targetChannel}
           />
