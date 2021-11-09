@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: any) {
     if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
       alert("SP非対応です。PCでご覧ください。")
     }
-  })
+  }, [])
 
   return(
     <Layout>
