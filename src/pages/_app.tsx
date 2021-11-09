@@ -2,7 +2,6 @@ import '../styles/global.scss'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from  '../components/react/layout'
 import { useEffect } from 'react';
-import router from "next/router"
 
 export default function App({ Component, pageProps }: any) {
 
